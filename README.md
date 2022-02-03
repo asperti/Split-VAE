@@ -44,7 +44,7 @@ Here are some examples of semantic splitting:
 
 <p align="center"><img src="CELEBA_7.png" /><p>
 	
-In case of sematic splitting, the Frèchet Inception Distance (FID) of y1 and y2 is usually lower (hence better) 
+In case of sematic splitting, the Frèchet Inception Distance (FID) of y1 and y2 is frequently lower (hence better) 
 than that of y, that clearly suffers from being the average of the formers. 
 	
 In a sense, a SVAE forces the Variational Autoencoder to <em>make choices</em>, in contrast with its intrinsic tendency to <em>average</em> between alternatives with the aim to minimize the reconstruction loss towards a specific sample.	
