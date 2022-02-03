@@ -60,7 +60,7 @@ quality and precision of contours is both unexpected and remarkable.
 	
 <p align="center"><img src="CELEBA_masks.png" /><p>	
 	
-And some generated faces (FID=35.5).  Observe in particualr the
+And some generated faces (FID=35.5).  Observe in particular the
 wide differentiation in pose, illumination, colors, age and expressions.
 	
 <p align="center"><img src="CELEBA_square_nice.png" /><p>
