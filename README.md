@@ -26,7 +26,7 @@ two complementary high frequency sub-images.
 
 Here are some examples of syntatic splitting:
 
-<p align="center"><img src="" /><p>
+<p align="center"><img src="mnist_square.pgn" /><p>
 	
 <p align="center"><img src="" /><p>
 	
@@ -49,9 +49,11 @@ than that of y, that clearly suffers from being the average of the formers.
 	
 In a sense, a SVAE forces the Variational Autoencoder to <em>make choices</em>, in contrast with its intrinsic tendency to {\em average} between alternatives with the aim to minimize the reconstruction loss towards a specific sample.	
 	
-## More GENERATED maps
-	
-here are some addiitonal examples of semantic compisitonal maps gnerated for CelebA
+## More examples of GENERATED images
+
+Examples of Mnist-like gnerated digits (FID=
 	
 <p align="center"><img src="" /><p>
+	
+	Here are some addiitonal examples of semantic compisitonal maps gnerated for CelebA
 	
