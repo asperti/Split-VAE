@@ -23,7 +23,7 @@ that we may roughly categorize as either <em>syntactical</em> or <em>semantical<
 In this case, the compositional map tends to exploit the strong correlation between adjacent pixels, splitting the image in
 two complementary high frequency sub-images. 
 
-Below are some examples of syntatic splitting. In all the following pictures, the first row is the compositional map, then in order y1, y2 and
+Below are some examples of syntactic splitting. In all the following pictures, the first row is the compositional map, then in order y1, y2 and
 y. 
 
 <p align="center"><img src="mnist_syntactic.png" /><p>
