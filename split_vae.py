@@ -148,7 +148,6 @@ def FullModel(input_shape,latent_dim,base_dim=32,emb_dim=512, kernel_size=3,num_
     vae = Model([x,gamma],x_hat)
     
     #loss
-    beta = 3 
     L_rec =.5 * K.sum(K.square(x-x_hat), axis=[1,2,3]) / gamma 
     L_KL = .5 * K.sum(K.square(z_mean) + K.exp(z_log_var) - 1 - z_log_var, axis=-1)
     L_tot = K.mean(L_rec + beta * L_KL) 
