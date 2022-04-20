@@ -262,7 +262,7 @@ def compute_fid(REC=False,GEN=False,GMM=True,X=True,X1=True,X2=True,MIX=True):
     channels = true_images.shape[3]
     if REC: #to compute FID for reconstructed images
         emb = encoder.predict(x_test)
-        emb_hat, z, z_mean, z_log_var = to_latent(emb)
+        emb_hat, z, z_mean, z_log_var = through_latent(emb)
         dec = decoder.predict(emb_hat,batch_size=100)
         mask = dec[:,:,:,0:1]
         img1 = dec[:,:,:,1:1+channels]
