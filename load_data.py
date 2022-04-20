@@ -92,3 +92,15 @@ def load_celeba(data_folder=data_folder):
 	print('x_test shape: ' + str(x_test.shape))
 
 	return x_train, x_test
+
+def load_mnist(): 
+    # we pad data to size 32x32
+    from tensorflow.keras.datasets import mnist   
+    (o_train, y_train), (o_test, y_test) = mnist.load_data()
+    x_train = np.zeros((60000,32,32,1))
+    x_test = np.zeros((10000,32,32,1))
+    x_train[:,2:30,2:30,0] = o_train.astype('float32') / 255.
+    x_test[:,2:30,2:30,0] = o_test.astype('float32') / 255.
+    print(np.min(x_train))
+    print(np.max(x_train))
+    return (x_train, x_test)
