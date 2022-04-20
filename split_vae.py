@@ -135,13 +135,14 @@ def FullModel(input_shape,latent_dim,base_dim=32,emb_dim=512, kernel_size=3,num_
     
 
     x = Input(shape=input_shape)
+    channels = input_shape[2]
     gamma = Input(shape=())
     emb = encoder(x)
     emb_hat, z, z_mean, z_log_var = through_latent(emb)
     dec = decoder(emb_hat)
     mask = dec[:,:,:,0:1]
-    img1 = dec[:,:,:,1:4]
-    img2 = dec[:,:,:,4:7]
+    img1 = dec[:,:,:,1:1+channels]
+    img2 = dec[:,:,:,1+channels:1+2*channels]
     x_hat = img1*mask + img2*(1-mask)
 
     vae = Model([x,gamma],x_hat)
@@ -259,13 +260,14 @@ def get_stats():
     
 def compute_fid(REC=False,GEN=False,GMM=True,X=True,X1=True,X2=True,MIX=True):
     true_images = x_test[0:10000]
+    channels = true_images.shape[3]
     if REC: #to compute FID for reconstructed images
         emb = encoder.predict(x_test)
         emb_hat, z, z_mean, z_log_var = to_latent(emb)
         dec = decoder.predict(emb_hat,batch_size=100)
         mask = dec[:,:,:,0:1]
-        img1 = dec[:,:,:,1:4]
-        img2 = dec[:,:,:,4:7]
+        img1 = dec[:,:,:,1:1+channels]
+        img2 = dec[:,:,:,1+channels:1+2*channels]
         generated = img1*mask + img2*(1-mask)
         fidscore = fid.get_fid(true_images, generated)
         print("reconstructed = ", fidscore)
@@ -275,8 +277,8 @@ def compute_fid(REC=False,GEN=False,GMM=True,X=True,X1=True,X2=True,MIX=True):
         dec = decoder.predict(emb,batch_size=50)
         plot_three(dec)
         mask = dec[:,:,:,0:1]
-        img1 = dec[:,:,:,1:4]
-        img2 = dec[:,:,:,4:7]
+        img1 = dec[:,:,:,1:1+channels]
+        img2 = dec[:,:,:,1+channels:1+2*channels]
         generated = img1*mask + img2*(1-mask)
         fidscore = fid.get_fid(true_images,x_train[0:10000])
         print("real = ", fidscore)
@@ -297,8 +299,8 @@ def compute_fid(REC=False,GEN=False,GMM=True,X=True,X1=True,X2=True,MIX=True):
         dec = decoder.predict(emb,batch_size=50)
         #plot_three(dec)
         mask = dec[:,:,:,0:1]
-        img1 = dec[:,:,:,1:4]
-        img2 = dec[:,:,:,4:7]
+        img1 = dec[:,:,:,1:1+channels]
+        img2 = dec[:,:,:,1+channels:1+2*channels]
         generated = img1*mask + img2*(1-mask)
         img_mix =np.copy(img1)
         img_mix[5000:] = img2[5000:]
